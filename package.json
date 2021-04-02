@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "noder server",
+    "start": "node server",
     "server": "nodemon server"
   },
   "keywords": [],
@@ -18,10 +18,16 @@
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.3",
+    "prettier": "^2.2.1",
     "request": "^2.88.2"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
     "nodemon": "^2.0.7"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 4,
+    "semi": true
   }
 }
