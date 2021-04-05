@@ -35,7 +35,7 @@ router.post(
         const { name, email, password } = req.body;
 
         try {
-            // Check if user exists
+            // Check database for user
             let user = await User.findOne({ email });
 
             if (user) {
@@ -46,12 +46,9 @@ router.post(
 
             // Get user's Gravatar
             const avatar = gravatar.url(email, {
-                // size
-                s: '200',
-                // rating
-                r: 'pg',
-                // default avatar image
-                d: 'mm',
+                s: '200', // size
+                r: 'pg', // rating
+                d: 'mm', // default avatar image
             });
 
             user = new User({
@@ -61,10 +58,11 @@ router.post(
                 password,
             });
 
-            // Encrypt password
+            // Encrypt & hash the password
             const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(password, salt); // Hash the password
-            await user.save();
+            user.password = await bcrypt.hash(password, salt);
+
+            await user.save(); // save user to database
 
             // Return JSON Webtoken
             const payload = {
@@ -76,7 +74,7 @@ router.post(
             jwt.sign(
                 payload,
                 config.get('jwtSecret'),
-                { expiresIn: 3600 },
+                { expiresIn: 360000 },
                 (err, token) => {
                     if (err) {
                         throw err;
