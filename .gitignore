@@ -1,16 +1,14 @@
 /node_modules
 /config/default.json
 
-
-node_modules/
 config/production.json
 config/default.json
 client/build
 client/.eslintcache
+/client/node_modules
 
 .env
 .idea
-
 # General
 .DS_Store
 .AppleDouble
