@@ -1,6 +1,13 @@
 /node_modules
 /config/default.json
 
+
+node_modules/
+config/production.json
+config/default.json
+client/build
+client/.eslintcache
+
 .env
 .idea
 
